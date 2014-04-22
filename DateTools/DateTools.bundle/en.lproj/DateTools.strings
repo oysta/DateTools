@@ -69,3 +69,28 @@
 
 /* No comment provided by engineer. */
 "This year" = "This year";
+
+"%d seconds##{one}" = "%d second";
+"%d seconds##{other}" = "%d seconds";
+
+"%d minutes##{one}" = "%d minute";
+"%d minutes##{other}" = "%d minutes";
+
+"%d hours##{one}" = "%d hour";
+"%d hours##{other}" = "%d hours";
+
+"%d days##{one}" = "%d day";
+"%d days##{other}" = "%d days";
+
+"%d weeks##{one}" = "%d week";
+"%d weeks##{other}" = "%d weeks";
+
+"%d months##{one}" = "%d month";
+"%d months##{other}" = "%d months";
+
+"%d years##{one}" = "%d year";
+"%d years##{other}" = "%d years";
+
+
+
+

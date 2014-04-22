@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0AFD486518F0BBC0004D0FE1 /* DateTools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AFD486418F0BBC0004D0FE1 /* DateTools.bundle */; };
+		CC370DAE19063DD000669860 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC370DAD19063DD000669860 /* libPods.a */; };
 		F007632018DE5F5E00A99075 /* DateToolsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F007631E18DE5F5E00A99075 /* DateToolsViewController.m */; };
 		F007632118DE5F5E00A99075 /* DateToolsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F007631F18DE5F5E00A99075 /* DateToolsViewController.xib */; };
 		F007632518DE5FE300A99075 /* Colours.m in Sources */ = {isa = PBXBuildFile; fileRef = F007632418DE5FE300A99075 /* Colours.m */; };
@@ -56,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		0AFD486418F0BBC0004D0FE1 /* DateTools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DateTools.bundle; path = ../../../DateTools/DateTools.bundle; sourceTree = "<group>"; };
+		CC370DA91906360F00669860 /* Pods.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		CC370DAD19063DD000669860 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		F007631D18DE5F5E00A99075 /* DateToolsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateToolsViewController.h; sourceTree = "<group>"; };
 		F007631E18DE5F5E00A99075 /* DateToolsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateToolsViewController.m; sourceTree = "<group>"; };
 		F007631F18DE5F5E00A99075 /* DateToolsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateToolsViewController.xib; sourceTree = "<group>"; };
@@ -110,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC370DAE19063DD000669860 /* libPods.a in Frameworks */,
 				F0F08DA118D9E80E00214C6B /* CoreGraphics.framework in Frameworks */,
 				F0F08DA318D9E80E00214C6B /* UIKit.framework in Frameworks */,
 				F0F08D9F18D9E80E00214C6B /* Foundation.framework in Frameworks */,
@@ -195,6 +199,7 @@
 		F0F08D9218D9E80E00214C6B = {
 			isa = PBXGroup;
 			children = (
+				CC370DA91906360F00669860 /* Pods.xcconfig */,
 				F0F08DA418D9E80E00214C6B /* DateToolsExample */,
 				F0F08DC318D9E80E00214C6B /* DateToolsExampleTests */,
 				F0F08D9D18D9E80E00214C6B /* Frameworks */,
@@ -214,6 +219,7 @@
 		F0F08D9D18D9E80E00214C6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CC370DAD19063DD000669860 /* libPods.a */,
 				F0F08D9E18D9E80E00214C6B /* Foundation.framework */,
 				F0F08DA018D9E80E00214C6B /* CoreGraphics.framework */,
 				F0F08DA218D9E80E00214C6B /* UIKit.framework */,
@@ -294,9 +300,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0F08DCD18D9E80E00214C6B /* Build configuration list for PBXNativeTarget "DateToolsExample" */;
 			buildPhases = (
+				CC370DAC1906399900669860 /* Check Pods Manifest.lock */,
 				F0F08D9718D9E80E00214C6B /* Sources */,
 				F0F08D9818D9E80E00214C6B /* Frameworks */,
 				F0F08D9918D9E80E00214C6B /* Resources */,
+				CC370DAB1906396600669860 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -387,6 +395,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CC370DAB1906396600669860 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"";
+			showEnvVarsInLog = 0;
+		};
+		CC370DAC1906399900669860 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\ncat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\nexit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F0F08D9718D9E80E00214C6B /* Sources */ = {
@@ -520,6 +561,7 @@
 		};
 		F0F08DCE18D9E80E00214C6B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC370DA91906360F00669860 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -527,6 +569,10 @@
 				GCC_PREFIX_HEADER = "DateToolsExample/DateToolsExample-Prefix.pch";
 				INFOPLIST_FILE = "DateToolsExample/DateToolsExample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -534,6 +580,7 @@
 		};
 		F0F08DCF18D9E80E00214C6B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC370DA91906360F00669860 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -541,6 +588,10 @@
 				GCC_PREFIX_HEADER = "DateToolsExample/DateToolsExample-Prefix.pch";
 				INFOPLIST_FILE = "DateToolsExample/DateToolsExample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

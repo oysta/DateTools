@@ -219,9 +219,52 @@ static NSCalendar *implicitCalendar = nil;
     
 }
 
-- (NSString *) logicLocalizedStringFromFormat:(NSString *)format withValue:(NSInteger)value{
+- (NSString *)timeDeltaSinceNow{
+    return [self timeDeltaSinceDate:[NSDate date]];
+}
+
+- (NSString *)timeDeltaSinceDate:(NSDate *)date{
+    
+    //If shortened formatting is requested, drop the "ago" part of the time ago
+    //use abbreviated unit names
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSUInteger unitFlags = NSMinuteCalendarUnit | NSHourCalendarUnit | NSDayCalendarUnit | NSWeekCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSSecondCalendarUnit;
+    NSDate *earliest = [self earlierDate:date];
+    NSDate *latest = (earliest == self) ? date : self;
+    NSDateComponents *components = [calendar components:unitFlags fromDate:earliest toDate:latest options:0];
+    
+    
+    if (components.year >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@years" withValue:components.year];
+    }
+    else if (components.month >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@months" withValue:components.month];
+    }
+    else if (components.week >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@weeks" withValue:components.week];
+    }
+    else if (components.day >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@days" withValue:components.day];
+    }
+    else if (components.hour >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@hours" withValue:components.hour];
+    }
+    else if (components.minute >= 1) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@minutes" withValue:components.minute];
+    }
+    else if (components.second >= 3) {
+        return [self logicLocalizedStringFromFormat:@"%%d %@seconds" withValue:components.second];
+    }
+    else {
+        return [self logicLocalizedStringFromFormat:@"%%d %@seconds" withValue:components.second];
+        //return DateToolsLocalizedStrings(@"Now"); //string not yet translated 2014.04.05
+    }
+}
+
+- (NSString *)logicLocalizedStringFromFormat:(NSString *)format withValue:(NSInteger)value{
     NSString * localeFormat = [NSString stringWithFormat:format, [self getLocaleFormatUnderscoresWithValue:value]];
-    return [NSString stringWithFormat:DateToolsLocalizedStrings(localeFormat), value];
+    return [NSString stringWithFormat:DateToolsLocalizedStringsQuantity(localeFormat, value), value];
 }
 
 - (NSString *)getLocaleFormatUnderscoresWithValue:(double)value{

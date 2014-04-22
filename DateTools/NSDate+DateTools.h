@@ -20,9 +20,16 @@
 // ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#import <Smartling.i18n/SLLocalization.h>
+
 #ifndef DateToolsLocalizedStrings
 #define DateToolsLocalizedStrings(key) \
 NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"DateTools.bundle"]], nil)
+#endif
+
+#ifndef DateToolsLocalizedStringsQuantity
+#define DateToolsLocalizedStringsQuantity(key, quantity) \
+SLPluralizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"DateTools.bundle"]], quantity, nil)
 #endif
 
 #import <Foundation/Foundation.h>
@@ -31,14 +38,15 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 @interface NSDate (DateTools)
 
 #pragma mark - Time Ago
-+ (NSString*)timeAgoSinceDate:(NSDate*)date;
-+ (NSString*)shortTimeAgoSinceDate:(NSDate*)date;
-- (NSString*)timeAgoSinceNow;
++ (NSString *)timeAgoSinceDate:(NSDate*)date;
++ (NSString *)shortTimeAgoSinceDate:(NSDate*)date;
+- (NSString *)timeAgoSinceNow;
 - (NSString *)shortTimeAgoSinceNow;
 - (NSString *)timeAgoSinceDate:(NSDate *)date;
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates;
 - (NSString *)shortTimeAgoSinceDate:(NSDate *)date;
-
+- (NSString *)timeDeltaSinceNow;
+- (NSString *)timeDeltaSinceDate:(NSDate *)date;
 
 #pragma mark - Date Components Without Calendar
 - (NSInteger)era;
@@ -56,8 +64,8 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 - (NSInteger)yearForWeekOfYear;
 - (NSInteger)daysInMonth;
 - (NSInteger)dayOfYear;
--(NSInteger)daysInYear;
--(BOOL)isInLeapYear;
+- (NSInteger)daysInYear;
+- (BOOL)isInLeapYear;
 - (BOOL)isToday;
 
 #pragma mark - Date Components With Calendar

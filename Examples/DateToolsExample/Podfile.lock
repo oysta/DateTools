@@ -1,0 +1,10 @@
+PODS:
+  - Smartling.i18n (1.0.3)
+
+DEPENDENCIES:
+  - Smartling.i18n (~> 1.0.3)
+
+SPEC CHECKSUMS:
+  Smartling.i18n: c6b23ffa34fda6db6c0cb8c17dccfef062fb4d03
+
+COCOAPODS: 0.32.1

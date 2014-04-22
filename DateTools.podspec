@@ -17,4 +17,6 @@ Pod::Spec.new do |s|
 
   s.source_files = 'DateTools'
   s.resources    = 'DateTools/DateTools.bundle'
+
+  s.dependency 'Smartling.i18n', '~> 1.0.3'
 end
